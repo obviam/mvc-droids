@@ -4,7 +4,7 @@ public class Droid {
 
 	private float x;
 	private float y;
-	private float speed = 2f;
+	private float speed = 10f;
 	private float rotation = 0f;
 	private float damage = 2f;
 	

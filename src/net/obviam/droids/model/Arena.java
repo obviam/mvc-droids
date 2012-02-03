@@ -25,6 +25,9 @@ public class Arena {
 				grid[j][i] = null;
 			}
 		}
+		// add the droid
+		grid[(int)droid.getY()][(int) droid.getX()] = droid;
+		
 		// add 5 obstacles and 5 enemies at random positions
 		for (int i = 0; i < 5; i++) {
 			int x = random.nextInt(WIDTH);
@@ -52,6 +55,10 @@ public class Arena {
 	}
 	public Droid getDroid() {
 		return droid;
+	}
+
+	public Object[][] getGrid() {
+		return grid;
 	}
 	
 }

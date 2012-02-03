@@ -6,9 +6,13 @@ import java.awt.Event;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import net.obviam.droids.controller.GameEngine;
+
 public class Droids extends Applet implements Runnable {
 
 	private static final long serialVersionUID = -2472397668493332423L;
+	
+	private GameEngine engine = new GameEngine();
 
 	public void start() {
 		new Thread(this).start();
@@ -32,6 +36,11 @@ public class Droids extends Applet implements Runnable {
 			g.setColor(Color.black);
 			g.fillRect(0, 0, 480, 320);
 
+			// Update the state (convert to seconds)
+			engine.update((float)(delta / 1000000000.0));
+			// Render the world
+			engine.render(g);
+			
 			// Draw the entire results on the screen.
 			appletGraphics.drawImage(screen, 0, 0, null);
 
@@ -52,7 +61,7 @@ public class Droids extends Applet implements Runnable {
 	}
 
 	public boolean handleEvent(Event e) {
-		return false;
+		return engine.handleEvent(e);
 	}
 	
 }
